@@ -15,16 +15,18 @@ fn get_password() -> String {
     password.trim().to_lowercase()
 }
 
-enum State {
+enum Mode {
     MainMenu,
     Encrypt,
     Decrypt,
 }
 
+struct State {}
+
 fn main() {
-    let alphabet: [char; 26] = [
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
-        's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+    let alphabet: [char; 27] = [
+        ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+        'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
     ];
     let mut pass_phrase_alphabet: Vec<char> = vec![];
     loop {
@@ -33,9 +35,9 @@ fn main() {
         if pk.is_empty() {
             break;
         }
-        while pass_phrase_alphabet.len() < 26 {
+        while pass_phrase_alphabet.len() < 27 {
             for c in pk.chars() {
-                if pass_phrase_alphabet.len() < 26 {
+                if pass_phrase_alphabet.len() < 27 {
                     pass_phrase_alphabet.push(c);
                     // println!("{}", c);
                 } else {
@@ -43,7 +45,7 @@ fn main() {
                 }
             }
         }
-        // print!(
+        // println!(
         //     "length is {}, this is the key: {:?}",
         //     pass_phrase_alphabet.len(),
         //     pass_phrase_alphabet
